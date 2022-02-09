@@ -1,21 +1,21 @@
-version: '3' # specify docker-compose version
+version: '3'
 
 services:
-  express: # name of the first service
-    build: # specify the directory of the Dockerfile
+  express: # backend
+    build: 
       context: ./express_backend
     ports:
-      - "8040:3001" # maps port 3001 on localhost to 80 in container
+      - "8040:3001" 
     networks:
       - mynetwork
     depends_on:
       - "react"
 
-  react: # name of the second service
-    build:  # specify the directory of the Dockerfile
+  react: # frontend
+    build:  
       context: ./react_frontend
     ports:
-      - "8050:3000" # maps port 8000 on localhost to 8000 in container
+      - "8050:3000" 
     networks:
       - mynetwork
 
