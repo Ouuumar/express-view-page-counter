@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  express: # backend
+    build: 
+      context: ./express_backend
+    ports:
+      - "8040:3001" 
+    networks:
+      - mynetwork
+    depends_on:
+      - "react"
+
+  react: # frontend
+    build:  
+      context: ./react_frontend
+    ports:
+      - "8050:3000" 
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
