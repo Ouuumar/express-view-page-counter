@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   getData() {
-    axios.get('http://host.docker.internal:3001', { withCredentials: true }).then(({data}) => { this.setState({ count: data.pageCount }) })
+    axios.get('http://host.docker.internal:3000', { withCredentials: true }).then(({data}) => { this.setState({ count: data.pageCount }) })
   }
 
   render() {

@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const cors = require('cors')
 
-app.use(cors({credentials: true, origin: 'http://host.docker.internal:3000'}));
+app.use(cors({credentials: true, origin: 'http://host.docker.internal:3001'}));
 
 app.use(
     session({
@@ -16,11 +16,11 @@ app.use(
 );
 
 app.get('/', function (req, res) {
-    if (!req.session.pageCountByCurrentUserOrAnyNameYouWant)
-        req.session.pageCountByCurrentUserOrAnyNameYouWant = 0;
-    req.session.pageCountByCurrentUserOrAnyNameYouWant++;
+    if (!req.session.pageCounter)
+        req.session.pageCounter = 0;
+    req.session.pageCounter++;
     res.send({
-        pageCount: req.session.pageCountByCurrentUserOrAnyNameYouWant
+        pageCount: req.session.pageCounter
     });
 });
 
